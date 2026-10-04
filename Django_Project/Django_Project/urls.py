@@ -49,4 +49,25 @@ urlpatterns = [
     # http://127.0.0.1:8000/12/Bear/33 必须后面接 1～2位数字/Bear/1～2位数字才可以访问
     # http://127.0.0.1:8000/ab/Bear/331 改为字母 ab/Bear/三位数字，则不能访问
     re_path(r"^(?P<x>\d{1,2})/Bear/(?P<y>\d{1,2})$", test_two_api),
+
+    # 常用方法请求入口
+    path(f"page_2026/", page_2026),
+
+
+
+    # HttpResponse 返回纯文本，展示“动态内容”
+    path("current_time/", current_time),
+
+    # HttpResponse 返回 Json，展示“json api”
+    path("api_info/", api_info),
+
+    # HttpResponse 流式下载文件
+    path("file_page/", file_page),
+    path("file/<str:file_name>", file, name="file"),
+
+
+
+
+
+
 ]

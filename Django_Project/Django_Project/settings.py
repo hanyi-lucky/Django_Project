@@ -92,7 +92,8 @@ ROOT_URLCONF = 'Django_Project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 添加模板路径 BASE_DIR / "templates"
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -189,7 +190,9 @@ STATICFILES_DIRS = [
 ]
 
 # 设置文件上传存储路径
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+# 注意：BASE_DIR 指向的是 manage.py 所在的 Django_Project 目录，而 media 文件夹是建在它上一级的
+# 所以这里必须用 .. 回退目录，不然拼出来的路径下没有一级才能指到 media 文件，下载就会提示“文件不存在”
+MEDIA_ROOT = os.path.join(BASE_DIR, '..' , "media/")
 # 文件的统一路由
 MEDIA_URL = "/media/"
 
